@@ -3,8 +3,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.FetchType;
 
 @Entity
 @Table(name = "vehicles")
@@ -13,6 +16,9 @@ public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
     @Column(nullable = false)
     private String make;
     @Column(nullable = false)
@@ -49,6 +55,9 @@ public class Vehicle {
     public void setVin(String vin) {
         this.vin = vin;
     }
+    public void setUser(User user) {
+        this.user = user;
+    }
     public Long getId() {
         return id;
     }
@@ -69,5 +78,8 @@ public class Vehicle {
     }
     public String getVin() {
         return vin;
+    }
+    public User getUser() {
+        return user;
     }
 }
