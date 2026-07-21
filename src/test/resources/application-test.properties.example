@@ -1,0 +1,8 @@
+spring.datasource.url=jdbc:postgresql://localhost:5432/autobio_test
+spring.datasource.username=your_test_db_username
+spring.datasource.password=your_test_db_password
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+logging.level.root=INFO
+logging.level.com.autobio=DEBUG
